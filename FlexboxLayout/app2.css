@@ -1,0 +1,42 @@
+.layout {
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-left {
+  order: 1;
+  width: 300px;
+  height: 500px;
+}
+.main {
+  order: 2;
+  width: 700px;
+  height: 500px;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  order: 0;
+  justify-content: space-between;
+}
+a:link {
+  color: orange;
+}
+a:visited {
+  color: darkorange;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  order: 2;
+}
