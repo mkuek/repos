@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: helvetica;
+}
+
+body {
+  background: #f2f2f2;
+  overflow: auto;
+}
+
+h1 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  margin: 5%;
+  font-size: 3rem;
+  text-decoration: underline;
+}
+#taskBar {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.pendHeader {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  justify-content: center;
+}
+.compHeader {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  justify-content: center;
+}
+
+ul {
+  /* text-align: start; */
+  /* padding-left: 10%; */
+  /* padding: 7%; */
+  width: 100%;
+  font-size: 1em;
+}
+
+li:hover {
+  color: #007bff;
+  /* margin: 4%; */
+  transition: 0.05s ease;
+  cursor: pointer;
+}
