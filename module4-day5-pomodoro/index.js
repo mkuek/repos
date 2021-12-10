@@ -25,20 +25,28 @@ let isClockRunning = false;
 //25 mins standard pomodoro
 let workSessionDuration = 1500;
 let currentTimeLeftInSession = 1500;
+document.getElementById("pomorodoForm-PauseBtn").disabled = true;
 
 // START
 startBtn.addEventListener("click", () => {
   toggleClock();
+  document.getElementById("pomorodoForm-StartBtn").disabled = true;
+  document.getElementById("pomorodoForm-addBtn").disabled = true;
+  document.getElementById("pomorodoForm-PauseBtn").disabled = false;
 });
 
 // PAUSE
 pauseBtn.addEventListener("click", () => {
   toggleClock();
+  document.getElementById("pomorodoForm-StartBtn").disabled = false;
+  document.getElementById("pomorodoForm-addBtn").disabled = false;
 });
 
 // RESET
 resetBtn.addEventListener("click", () => {
   toggleClock(true);
+  document.getElementById("pomorodoForm-StartBtn").disabled = false;
+  document.getElementById("pomorodoForm-addBtn").disabled = false;
 });
 
 //ADJUST TIME
@@ -47,8 +55,13 @@ addBtn.addEventListener("click", () => {
 
   const secInput = document.getElementById("secondsInputText").value;
   console.log(minInput + secInput);
-  currentTimeLeftInSession = parseInt(minInput) * 60 + parseInt(secInput);
-  console.log(currentTimeLeftInSession);
+  if (minInput == "") {
+    currentTimeLeftInSession = parseInt(secInput);
+  } else {
+    currentTimeLeftInSession = parseInt(minInput) * 60 + parseInt(secInput);
+    console.log(currentTimeLeftInSession);
+  }
+
   displayCurrentTimeLeftInSession();
 });
 
@@ -66,8 +79,13 @@ const toggleClock = (reset) => {
       isClockRunning = true;
       clockTimer = setInterval(() => {
         // decrease time left / increase time spent
-        currentTimeLeftInSession--;
-        displayCurrentTimeLeftInSession();
+        if (currentTimeLeftInSession > 0) {
+          currentTimeLeftInSession--;
+          displayCurrentTimeLeftInSession();
+        } else {
+          clearInterval(clockTimer);
+          alert("TIME COMPLETE");
+        }
       }, 1000);
     }
   }
