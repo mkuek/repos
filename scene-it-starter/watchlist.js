@@ -25,7 +25,7 @@ function renderMovies(movieArray) {
   movieHtmlArray = movieArray.map(function (currentMovie) {
     return `    <div class="card border-dark col-lg-3 col-md-2 m-lg-3 m-sm-2 px-0 text-center text-white" style="background-color: #023e8a" id="movieContainer">
       <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title} Poster" />
-      <div class="row card-body justify-content-center">
+      <div class="row card-body align-items-center justify-content-center">
         <div class="row">
           <div class="movie">
             <div class="title">${currentMovie.Title}</div>

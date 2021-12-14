@@ -5,8 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // event listener code goes here
     e.preventDefault();
     const searchString = document.getElementById("search-bar").value;
-    const rendered = renderMovies(movieData);
-    document.getElementById("results").innerHTML = rendered;
+    const urlEncodedSearchString = encodeURIComponent(searchString);
+    if (searchString == "") {
+      alert("Please Enter a Search String");
+    } else {
+      fetch(
+        "http://www.omdbapi.com/?apikey=59354c85&s=" + urlEncodedSearchString
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          const rendered = renderMovies(data.Search);
+          document.getElementById("results").innerHTML = rendered;
+          movieData = data.Search;
+        });
+    }
   });
   document.addEventListener("click", function (event) {
     // code for document click listener goes here
@@ -68,6 +82,7 @@ function renderMovies(movieArray) {
 }
 function saveToWatchlist(movieID) {
   const movie = movieData.find(function (currentMovie) {
+    console.log(currentMovie.imdbID);
     return currentMovie.imdbID == movieID;
   });
   let watchlistJSON = localStorage.getItem("watchlist");
@@ -77,14 +92,13 @@ function saveToWatchlist(movieID) {
   });
   if (watchlist == null) {
     watchlist = [];
-    console.log("test");
+    console.log("Watchlist Empty");
   } else if (test !== undefined) {
     alert("Already on Watchlist");
-  } else {
-    watchlist.push(movie);
-    watchlistJSON = JSON.stringify(watchlist);
-    localStorage.setItem("watchlist", watchlistJSON);
   }
+  watchlist.push(movie);
+  watchlistJSON = JSON.stringify(watchlist);
+  localStorage.setItem("watchlist", watchlistJSON);
 }
 
 function removeWatchlist(movieID) {
