@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Please Enter a Search String");
     } else {
       fetch(
-        "http://www.omdbapi.com/?apikey=59354c85&s=" + urlEncodedSearchString
+        "https://www.omdbapi.com/?apikey=59354c85&s=" + urlEncodedSearchString
       )
         .then(function (response) {
           return response.json();
