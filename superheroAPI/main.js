@@ -2,7 +2,7 @@ let timer;
 let deleteFirstPhotoDelay;
 async function start() {
   const response = await fetch(
-    "http://www.omdbapi.com/?s=captain+america&apikey=bb60bab3"
+    "https://www.omdbapi.com/?s=captain+america&apikey=bb60bab3"
   );
   const data = await response.json();
   const data2 = data.Search[0];
@@ -40,15 +40,6 @@ async function loadByBreed(breed) {
       <div class="slide" style="background-image: url('${data3["Poster"]}')"></div>`;
 
     loadIMDB(IMDB);
-  } else {
-    document.getElementById("slideshow").innerHTML = ``;
-    document.getElementById("movieTitle").innerHTML = ``;
-    document.getElementById("year").innerHTML = ``;
-    document.getElementById("rating").innerHTML = ``;
-    document.getElementById("director").innerHTML = ``;
-    document.getElementById("imdbRating").innerHTML = ``;
-    document.getElementById("plot").innerHTML = ``;
-    document.getElementById("imdbLink").innerHTML = ``;
   }
 }
 
