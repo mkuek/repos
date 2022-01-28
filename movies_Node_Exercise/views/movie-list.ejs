@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta Title="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    const list = db.map((item) => item.Title.join(""));
+  </script>
+  <body>
+    <h1>List of Movies/TV Shows</h1>
+        <ol>
+      <% db.forEach((item,index) =>{ %>
+        <li>
+          <a href="/movie-details/<%=index%>"> <%=`${db[index].Title}`%> </a>
+        </li>
+      <%});%>
+    </ol>
+  </body>
+</html>
