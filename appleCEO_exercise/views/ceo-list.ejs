@@ -11,47 +11,14 @@
   </script>
   <body>
     <h1>Apple CEOs since inception</h1>
+    
     <ol>
-      <li>
-        <a href="/ceo-details/<%= db[0].slug%>"
-          ><%= `${db[0].name}- ${db[0].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[1].slug%>"
-          ><%= `${db[1].name}- ${db[1].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[2].slug%>"
-          ><%= `${db[2].name}- ${db[2].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[3].slug%>"
-          ><%= `${db[3].name}- ${db[3].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[4].slug%>"
-          ><%= `${db[4].name}- ${db[4].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[5].slug%>"
-          ><%= `${db[5].name}- ${db[5].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[6].slug%>"
-          ><%= `${db[6].name}- ${db[6].year}` %></a
-        >
-      </li>
-      <li>
-        <a href="/ceo-details/<%= db[7].slug%>"
-          ><%= `${db[7].name}- ${db[7].year}` %></a
-        >
-      </li>
+      <% db.forEach((item,index) =>{ %>
+        <li>
+          <a href="/ceo-details/<%=db[index].slug%>"> <%=`${db[index].name}`%> </a>
+        </li>
+      <%});%>
     </ol>
+
   </body>
 </html>
