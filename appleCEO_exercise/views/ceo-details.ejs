@@ -5,11 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
-    <h1>Apple CEOs</h1>
-    <li>CEO Name: <%=ceoInfo[0].name%></li>
-    <li>CEO on: <%=ceoInfo[0].year%></li>
-    <h3><a href="/ceo-list">Back to CEO List</a></h3>
+    <style>
+      .card-header{
+        card-color: info;
+      }
+    </style>
+    <section class="section">
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter has-text-centered ">
+            <div class="card">
+              <div class="card-header has-background-primary ">
+                <div class="card-header-title">
+                  <h1 class="title is-1 has-text-white">Apple CEOs</h1>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="content is-medium">
+                    <p>CEO Name: <%=filteredCEO[2].name%></p>
+                    <p>CEO on: <%=filteredCEO[2].year%></p>      
+                </div>
+              </div>
+              <div class="card-footer">
+                <a class="card-footer-item" href="/ceo-details/<%=filteredCEO[0].slug%>">Previous CEO</a>
+                <a class="card-footer-item" href="/ceo-list">Back to CEO List</a>
+                <a class="card-footer-item" href="/ceo-details/<%=filteredCEO[1].slug%>">Next CEO</a>
+              </div>
+            </div>    
+          </div>
+        </div>
+  
+      </div>
+    </section>
   </body>
 </html>

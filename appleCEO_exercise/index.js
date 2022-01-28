@@ -14,8 +14,17 @@ app.get("/ceo-list", (req, res) => {
 });
 app.get("/ceo-details/:slug", (req, res) => {
   const { slug } = req.params;
-  const ceoInfo = db.filter((ceo, index) => ceo.slug == slug);
-  res.render("ceo-details", { db, slug, ceoInfo });
+  let filteredCEO=[]
+  db.forEach((ceo, index) => {
+    if(ceo.slug == slug){
+      let prevCEO=db[index-1]!==undefined ? db[index-1] : {name:"end of list",year:"2022",slug:"end_of_list"}
+      let nextCEO=db[index+1]!==undefined ? db[index+1] : {name:"end of list",year:"2022",slug:"end_of_list"}
+      filteredCEO.push(prevCEO,nextCEO,ceo)
+    } else {
+      return false
+    };
+  });
+  res.render("ceo-details", { db, slug, filteredCEO });
 });
 
 app.listen(3000, () => {

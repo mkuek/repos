@@ -47,4 +47,9 @@ module.exports = [
     name: "Tim Cook",
     year: "2011",
   },
+  {
+    slug:"end_of_list",
+    name:"end of list",
+    year:"end of list"
+  },
 ];
