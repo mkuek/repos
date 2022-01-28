@@ -11,7 +11,7 @@
     <title><%=titles[albumNum]%></title>
   </head>
   <body>
-    <div class="section">
+    <section class="section">
       <div class="columns has-text-centered">
         <div class="column is-half is-offset-one-quarter">
           <div class="card">
@@ -19,14 +19,22 @@
               <img src="<%=images[albumNum]%>" alt="" />
             </div>
             <div class="card-content">
-              <h1 class="title is-1"><%=titles[albumNum]%></h1>
+              <div class="content">
+                <h1 class="title is-1"><%=titles[albumNum]%></h1>
+                <div class="content">Song titles:<%=songs[albumNum]%></div>
+              </div>
             </div>
-            <div class="content">Song titles:<%=songs[albumNum]%></div>
           </div>
         </div>
       </div>
+    </section>
+    <div class="container">
+      <div class="columns has-text-centered">
+        <div class="column is-half is-offset-one-quarter">
+          <a class="button is-info" href="/cds">Back to Discogrophy</a>
+          <a class="button is-info" href="/">Back to Home Page</a>
+        </div>
+      </div>
     </div>
-
-    <p><a href="/cds">Back to CD info</a></p>
   </body>
 </html>

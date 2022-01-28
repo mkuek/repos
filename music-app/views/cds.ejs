@@ -4,12 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <title>Discogrophy</title>
   </head>
   <body>
+    <section class="section">
+
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter has-text-centered">
+      <div class="box">
+      <table class="table is-striped is-hoverable has-text-centered">
+        <thead>
+          <tr>
+            <th>Album Number</th>
+            <th>Album Name</th>
+            <th>Album Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</td>
+            <td><a href=<%=`/albums/${numCDs-2}`%>><%=songNames[numCDs-2]%></a></td>
+            <td><%=albumDate[numCDs-2]%></td>
+          </tr>
+          <tr>
+            <th>2</td>
+            <td><a href=<%=`/albums/${numCDs-1}`%>><%=songNames[numCDs-1]%></a></td>
+            <td><%=albumDate[numCDs-1]%></td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+    </section>
     <div class="discogropy">
       <h1>Lil Wayne Discogrophy</h1>
-      <p><a href="/albums/0"><%=songNames[0]%></a></p>
+      <p><a href=<%=`/albums/${numCDs-2}`%>><%=songNames[numCDs-2]%></a></p>
       <p><a href="/albums/1"><%=songNames[1]%></a></p>
     </div>
     <a href="/">Home</a>

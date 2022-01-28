@@ -34,6 +34,15 @@ app.get("/cats", (req, res) => {
 app.get("/dogs", (req, res) => {
   res.send("WOOF!");
 });
+
+app.get("/search", (req, res) => {
+  const { q } = req.query;
+  if (!q) {
+    res.send("Nothing found if nothing searched");
+  }
+  res.send(`<h1>Search results for: ${q}</h1>`);
+});
+
 app.get("*", (req, res) => {
   res.send("Cannot find page!");
 });

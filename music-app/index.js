@@ -10,10 +10,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/cds", (req, res) => {
-  let songs = [
+  let albumInfo = [
     {
       name: "The Carter",
-      publishDate: "2004",
+      date: "2004",
       imgURL:
         "https://upload.wikimedia.org/wikipedia/en/d/d8/Lil_Wayne_-_Tha_Carter.jpg",
 
@@ -21,21 +21,25 @@ app.get("/cds", (req, res) => {
     },
     {
       name: "Free Weezy",
-      description: "2015",
+      date: "2015",
       imgURL: "images/FreeWeezy.jpg",
 
       songTitles: ["song1", "song2", "song3", "song4"],
     },
   ];
-  const songNames = songs.map((song, index) => {
+  const songNames = albumInfo.map((song, index) => {
     return [song.name].join("");
   });
-  res.render("cds", { songNames });
+  const albumDate = albumInfo.map((album, index) => {
+    return [album.date].join("");
+  });
+  const numCDs = songNames.length;
+
+  res.render("cds", { songNames, albumDate, numCDs });
 });
 
 app.get("/albums/:albumNum", (req, res) => {
   const { albumNum } = req.params;
-  console.log(albumNum);
   let weezyInfo = [
     {
       name: "The Carter",
