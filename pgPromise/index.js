@@ -28,9 +28,9 @@ app.post("/tasks", (req, res) => {
 
 //GET ALL TASKS
 app.get("/tasks", (req, res) => {
-  db.any("SELECT * FROM tasks")
+  db.any("SELECT * FROM tasks ORDER BY id")
     .then((results) => {
-      res.send(results);
+      res.render("home", { results });
     })
     .catch((e) => {
       console.log(e);
@@ -50,11 +50,12 @@ app.get("/tasks/:id", (req, res) => {
 });
 
 //UPDATE TASK TITLE
-app.patch("/tasks/:id/title", (req, res) => {
+app.post("/tasks/:id/title", (req, res) => {
   const { id } = req.params;
   const updateTask = req.body.title;
   db.none("UPDATE tasks SET title=($1) WHERE id=($2)", [updateTask, id])
     .then((results) => {
+      console.log(`Task ${id} was updated to ${updateTask}`);
       res.redirect("/tasks");
     })
     .catch((e) => {
@@ -63,7 +64,7 @@ app.patch("/tasks/:id/title", (req, res) => {
 });
 
 //UPDATE TASK COMPLETED
-app.patch("/tasks/:id/is_completed", (req, res) => {
+app.post("/tasks/:id/is_completed", (req, res) => {
   const { id } = req.params;
   const completeTask = req.body.is_completed;
   db.none("UPDATE tasks SET is_completed=($1) WHERE id=($2)", [
@@ -71,6 +72,7 @@ app.patch("/tasks/:id/is_completed", (req, res) => {
     id,
   ])
     .then((results) => {
+      console.log(`Task ${id} was updated to Complete: ${completeTask}`)
       res.redirect("/tasks");
     })
     .catch((e) => {
@@ -79,7 +81,7 @@ app.patch("/tasks/:id/is_completed", (req, res) => {
 });
 
 //DELETE TASK
-app.delete("/tasks/:id", (req, res) => {
+app.post("/tasks/:id", (req, res) => {
   const { id } = req.params;
   db.none("DELETE FROM tasks WHERE id=($1)", id)
     .then((results) => {

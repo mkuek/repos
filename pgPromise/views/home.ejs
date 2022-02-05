@@ -1,0 +1,80 @@
+<%- include("../views/partials/header") %> 
+  <body>
+    <div class="section">
+      <div class="container">
+        <div class="notification is-info has-text-centered">
+          <h1 class="title">ToDo List</h1>
+          <form action="/tasks" method="POST">
+            <label for="title">Add ToDo:</label>
+            <input type="text" name="title" id="title" />
+            <input type="submit" value="ADD" />
+          </form>   
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container has-text-white">
+        <div class="columns">
+          <div class="column is-3 is-offset-3 has-background-danger">
+            <div class="content is-danger">
+              <h1 class="title">Tasks todo:</h1>
+              <ol>
+                <% for (let result of results){%> 
+                <% if (result.is_completed !==true) { %>
+                <%- include("../views/partials/capitalize",{result}) %> 
+        
+                <li class="<%= result.is_completed %>">
+                  <form action="/tasks/<%=result.id%>/title" method="POST">
+                    <label for="title">
+                      <b><%=todoTitle %> -</b>
+                    </label>
+                    <input type="text" name="title" id="title" />
+                    <input type="submit" value="EDIT" />
+                  </form>
+                  <form action="/tasks/<%=result.id%>" method="POST">
+                    <input name="id" type="submit" value="DELETE" />
+                  </form>
+                  <form action="/tasks/<%=result.id%>/is_completed" method="POST">
+                    <button name="is_completed" type="submit" value="true">
+                      COMPLETE
+                    </button>
+                  </form>
+                </li>
+                <%};}%>
+              </ol>    
+            </div> 
+          </div>
+          <div class="column is-3 has-background-success">
+            <div class="content is-danger">
+              <h1 class="title">Completed Tasks:</h1>
+              <ol>
+                <% for (let result of results){%> 
+                <% if (result.is_completed ==true) { %>
+                <%- include("../views/partials/capitalize",{result}) %> 
+                
+                  <li class="<%= result.is_completed %>">
+                  <form action="/tasks/<%=result.id%>/title" method="POST">
+                    <label for="title">
+                      <b><%=todoTitle %> -</b>
+                    </label>
+                    <input type="text" name="title" id="title" />
+                    <input type="submit" value="EDIT" />
+                  </form>
+                  <form action="/tasks/<%=result.id%>" method="POST">
+                    <input name="id" type="submit" value="DELETE" />
+                  </form>
+                  <form action="/tasks/<%=result.id%>/is_completed" method="POST">
+                    <button name="is_completed" type="submit" value="false">
+                      NOT COMPLETE
+                    </button>
+                  </form>
+                </li>
+                <%};}%>
+              </ol> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
