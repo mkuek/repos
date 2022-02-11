@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= blog.title %></title>
+  </head>
+  <body>
+    <div>
+      <h1><%= blog.title %></h1>
+      <h3>Category:
+        <a href="/blog?category=<%= blog.category %>"><%= blog.category %></a>
+      </h3>
+    </div>
+    <ul>
+      <li>Blog Body: <%= blog.body %></li>
+    </ul>
+    <button><a href="/blog">Back to Blogs</a></button>
+    <button><a href="/blog/<%= blog._id %>/edit">Edit Post</a></button>
+    <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+      <button>Delete</button>
+    </form>
+  </body>
+</html>

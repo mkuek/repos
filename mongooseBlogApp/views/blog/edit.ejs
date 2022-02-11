@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Blog</title>
+  </head>
+  <body>
+    <h1>Edit Blog Post</h1>
+    <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
+      <label for="title">Blog Title</label>
+      <input
+        type="text"
+        title="title"
+        id="title"
+        placeholder="Blog Title"
+        value="<%= blog.title %>"
+      />
+      <div>
+        <label for="body">Blog Body</label>
+        <textarea
+          type="textarea"
+          name="body"
+          id="body"
+          cols="30"
+          rows="10"
+        ><%=blog.body %></textarea>
+      </div>
+      <label for="category">Select a Category</label>
+      <select name="category" id="category">
+        <% for (let category of categories) {%>
+            <option value="<%=category%>"<%= blog.category === category ? 'selected' : "" %>><%=category%></option>
+        <% } %>
+      </select>
+      <button>Submit</button>
+    </form>
+    <a href="/blog/<%= blog._id %> ">Cancel</a>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Products</title>
+  </head>
+  <body>
+    <h1><%= category %> Blogs</h1>
+    <button><a href="/blog/new">New Blog Post</a></button>
+    <ul>
+      <% for (let blog of blogs) {%>
+      <li><a href="/blog/<%= blog._id %>"><%= blog.title %></a> - 
+        <a href="/blog?category=<%= blog.category %>"><%= blog.category %></a>
+        <div class="blog-body">
+          <%= blog.body %> 
+        </div>
+      </li>
+      <% } %>
+    </ul>
+    <% if (category !=='All') {%>
+    <button><a href="/blog">All Blogs</a></button>
+    <% } %>
+  </body>
+</html>
